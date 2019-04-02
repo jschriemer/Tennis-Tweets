@@ -9,7 +9,7 @@ Install the libraries needed to run Tennis Scores. Tweepy is a python library fo
 ```bash
 pip install tweepy requests beautifulsoup4
 ```
-Create a twitter account to use for your bot on  [Twitter](https://twitter.com/signup). Youll have to apply to create a developer account, you can do that on their [developer site]([https://developer.twitter.com/en.html](https://developer.twitter.com/en.html)). Once you have done so there are a few steps you need to take.
+Create a twitter account to use for your bot on  [Twitter](https://twitter.com/signup). Youll have to apply to create a developer account, you can do that on their [developer site](https://developer.twitter.com/en.html). Once you have done so there are a few steps you need to take.
 * Click 'Create an App'
 * Provide the name and fill out the forms
 * When finished, click 'Key and Access Tokens' to generate API keys
