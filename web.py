@@ -14,10 +14,9 @@ from urllib.request import urlopen #this module lets us grab web pages.
 from bs4 import BeautifulSoup #this module lets us easily parse the html.
 #if you don't have BeautifulSoup downloaded, type 'pip install beautifulsoup4' into the command line
 
-#Real link!!!
-#tennis_ref = 'http://m.espn.com/general/tennis/dailyresults?wjb'
 def get_score(auth, api):
-    tennis_ref = 'http://m.espn.com/general/tennis/dailyresults?date=20190330&matchType=1&wjb='
+
+    tennis_ref = 'http://m.espn.com/general/tennis/dailyresults?wjb'
 
     score_url = urlopen(tennis_ref)
 
@@ -53,6 +52,6 @@ def final_score(matches, count, auth, api):
     for i in range(len(matches)):
         if matches[i]  != "":
             score = re.sub(r'([a-z])(\d{1})', r'\1 \2', matches[i]) #split players and the score
-            #player = re.find(r'([A-Z]\w+-*\w*)')
+            player = re.findall(r'([A-Z]\w+-*\w*)', score)
             #print(player.group(1) + player.group(2))
-            api.update_status(score + " #tennis #atp #miamiopen")
+            api.update_status(score + " #tennis #atp #miamiopen #" + player[0] + " #" + player[1])

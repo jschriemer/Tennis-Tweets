@@ -13,11 +13,11 @@ auth.set_access_token('1109891876889473027-4dXciYX2pum8DLFGnYr8L7FgnFkmzj', 'ZuU
 api = tweepy.API(auth)
 
 
-    #prints out Tennis_Scores
+#prints out Tennis_Scores
 user = api.me()
 print (user.name)
 
-    #Auto Follow back any users that follow Tennis_Scores
+#Auto Follow back any users that follow Tennis_Scores
 for follower in tweepy.Cursor(api.followers).items():
     follower.follow()
 
