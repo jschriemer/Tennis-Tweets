@@ -20,16 +20,17 @@ auth.set_access_token('', '')
 api = tweepy.API(auth)
 
 
+
 #prints out Tennis_Scores
 user = api.me()
 print (user.name)
 
 #Auto Follow back any users that follow Tennis_Scores
-for follower in tweepy.Cursor(api.followers).items():
-    follower.follow()
+#for follower in tweepy.Cursor(api.followers).items():
+#    follower.follow()
 
-schedule.every().day.at("23:59").do(score_tweet)
-
-while True:
-    schedule.run_pending()
-    time.sleep(1)
+#schedule.every().day.at("23:59").do(score_tweet)
+score_tweet()
+#while True:
+    #schedule.run_pending()
+    #time.sleep(1)
