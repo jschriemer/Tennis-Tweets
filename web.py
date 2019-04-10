@@ -1,3 +1,11 @@
+"""
+Title: Tennis-Scores
+Author: John Schriemer
+Date: Created on March 24, 2019
+License: MIT License
+Description: Webscraping Twitter bot for Men's ATP tennis score retrieval.
+"""
+
 from requests import get
 from requests.exceptions import RequestException
 from contextlib import closing
@@ -6,7 +14,7 @@ from bs4 import BeautifulSoup
 import re
 import tweepy
 
-
+#Main function to parse through html to find tennis data
 def get_score(auth, api):
 
     #Website url for webscraping
@@ -16,50 +24,24 @@ def get_score(auth, api):
 
     #Parse through site's html, and find class 'ind' (results stored here)
     tennis_score = BeautifulSoup(score_url, 'html.parser')
-
-
-
     game_section = tennis_score.findAll("div", class_="ind")
-
 
     #create hashtag for current tournament
     tournament = tennis_score.find("div", class_="sec row")
     words = tournament.text
     length = len(re.findall(r'([A-Z]\w+-*\w*)', words))
     tourna = re.findall(r'([A-Z]\w+-*\w*)', words)
-
     tournament_tag = ''
     i = 0
     while(i < length):
         tournament_tag = tournament_tag + tourna[i]
         i = i + 1
 
-
-    #create hashtag for round of tournament
+    #get the round of tournament
     round_section = tennis_score.findAll("div", class_="ind sub bold")
     for line in round_section:
      if line.text != "FULL TOURNAMENT RESULTS":
          fullround = line.text
-
-
-
-
-        #round_text = round.text
-        #print(round_text)
-    #else:
-    #    print("y")
-    #length = len(re.findall(r'([A-Z]\w+-*\w*)', words))
-    #tourna = re.findall(r'([A-Z]\w+-*\w*)', words)
-
-    tournament_tag = ''
-    i = 0
-    while(i < length):
-        tournament_tag = tournament_tag + tourna[i]
-        i = i + 1
-
-
-
-
 
     #Seperates daily results into a list
     matches = []
@@ -76,9 +58,8 @@ def count_match(matches, auth, api, tournament_tag, fullround):
     for i in range(len(matches)):
         if matches[i]  != "":
             count = count + 1
+    print(count + " matches today")
     final_score(matches, count, auth, api, tournament_tag, fullround)
-
-
 
 #Splits lists results into strings and adds a space betwen score and players
 def final_score(matches, count, auth, api, tournament_tag, fullround):
@@ -88,5 +69,5 @@ def final_score(matches, count, auth, api, tournament_tag, fullround):
             player = re.findall(r'([A-Z]\w+-*\w*)', score)
             round = re.findall(r'^[^:]+', fullround)
 
-            #api.update_status(round + " of the  #" + tournament_tag + " " +score + " #tennis #atp" + " #" + player[0] + " #" + player[1])
-            print(round[0] + " of the #" + tournament_tag + ": " +score + " #tennis #atp" + " #" + player[0] + " #" + player[1])
+
+            api.update_status(round[0] + " of the #" + tournament_tag + ": " +score + " #tennis #atp" + " #" + player[0] + " #" + player[1])
