@@ -1,4 +1,4 @@
-# Tennis Scores [![alt text][1.1]][1]
+# Tennis Tweets [![alt text][1.1]][1]
 [1.1]: http://i.imgur.com/tXSoThF.png
 [1]: http://www.twitter.com/TennisScores2
 
