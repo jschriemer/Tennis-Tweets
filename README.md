@@ -1,4 +1,6 @@
 # Tennis Scores [![alt text][1.1]][1]
+[1.1]: http://i.imgur.com/tXSoThF.png
+[1]: http://www.twitter.com/TennisScores2
 
 Twitter bot that live tweets ATP & ITF tennis scores using python libraries ****Tweepy**** and ****BeautifulSoup****.
 
@@ -59,7 +61,5 @@ api.update_status(found_text)
 
 [Beautiful Soup](https://pypi.org/project/beautifulsoup4/)
 [Tweepy](https://tweepy.readthedocs.io/en/v3.5.0/)
-[1.1]: http://i.imgur.com/tXSoThF.png
-[1]: http://www.twitter.com/TennisScores2
 
 ![alt text](http://cliparts.co/cliparts/Lid/jMy/LidjMy5dT.svg)
