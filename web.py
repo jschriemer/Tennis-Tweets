@@ -58,7 +58,7 @@ def count_match(matches, auth, api, tournament_tag, fullround):
     for i in range(len(matches)):
         if matches[i]  != "":
             count = count + 1
-    print(count + " matches today")
+    #print(count + " matches today")
     final_score(matches, count, auth, api, tournament_tag, fullround)
 
 #Splits lists results into strings and adds a space betwen score and players

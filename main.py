@@ -27,14 +27,15 @@ auth.set_access_token('', '')
 api = tweepy.API(auth)
 
 
-
 #prints out Tennis_Scores
 user = api.me()
 print (user.name)
 
 #Auto Follow back any users that follow Tennis_Scores
 for follower in tweepy.Cursor(api.followers).items():
-    follower.follow()
+#  if() #follower is NOT alreadey been followed by me,
+   follower.follow()
+
 
 score_tweet()
 
