@@ -14,8 +14,6 @@ from web import get_score
 #Twitter developer keys. See readme.md for more info
 
 
-
-
 def score_tweet():
     """Get and post the tennis scores"""
     user = API.me()
